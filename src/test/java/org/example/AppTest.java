@@ -1,39 +1,28 @@
 package org.example;
 
-import org.junit.Before;
-import org.junit.After;
-import org.junit.BeforeClass;
-import org.junit.AfterClass;
-import org.junit.Test;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
-import static org.junit.Assert.assertTrue;
 
-public class AppTest {
+public class AppTest
+    extends TestCase
+{
 
-    
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-        System.out.println("Before all tests");
+    public AppTest( String testName )
+    {
+        super( testName );
     }
 
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-        System.out.println("After all tests");
+
+    public static Test suite()
+    {
+        return new TestSuite( AppTest.class );
     }
 
-    @Before
-    public void setUp() throws Exception {
-        System.out.println("Before each test");
-    }
 
-    @After
-    public void tearDown() throws Exception {
-        System.out.println("After each test");
-    }
-
-    @Test
-    public void testApp() {
-        assertTrue(true);
+    public void testApp()
+    {
+        assertTrue( true );
     }
 }
-
