@@ -10,6 +10,7 @@ import static org.junit.Assert.assertTrue;
 
 public class AppTest {
 
+    
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         System.out.println("Before all tests");
