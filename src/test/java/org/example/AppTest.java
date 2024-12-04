@@ -1,38 +1,31 @@
 package org.example;
 
-import org.junit.Before;
 import org.junit.After;
-import org.junit.BeforeClass;
-import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class AppTest {
 
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-        System.out.println("Before all tests");
-    }
-
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-        System.out.println("After all tests");
-    }
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
 
     @Before
-    public void setUp() throws Exception {
-        System.out.println("Before each test");
+    public void setUp() {
+        System.setOut(new PrintStream(outContent));
     }
 
     @After
-    public void tearDown() throws Exception {
-        System.out.println("After each test");
+    public void tearDown() {
+        System.setOut(originalOut);
     }
 
     @Test
-    public void testApp() {
-        assertTrue(true);
+    public void testMain() {
+        App.main(null);  // Call the main method
+        assertEquals("Hello World!\n", outContent.toString());  // Check the output
     }
 }
-
